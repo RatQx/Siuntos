@@ -1,0 +1,108 @@
+﻿@model AutoNuoma.ViewModels.KnygaEditViewModel
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Knygos šalinimas</h2>
+
+<h3>Ar tikrai norite pašalinti šią knygą?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.pavadinimas)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.pavadinimas)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.autorius)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.autorius)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.kaina)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.kaina)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ISBN)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ISBN)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.isleidimo_metai)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.isleidimo_metai)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.puslapiu_skaicius)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.puslapiu_skaicius)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.leidykla)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.leidykla)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.kiekis)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.kiekis)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.iskeliama_saraso_pradzia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.iskeliama_saraso_pradzia)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.kalba)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.kalba)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.zanras)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.zanras)
+        </dd>
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            @if (ViewBag.naudojama != null)
+            {
+                <h5 style="color:red">@ViewBag.naudojama</h5>
+            }
+            else
+            {
+                <input type="submit" value="Šalinti" class="btn btn-danger" />
+            }
+            @Html.ActionLink("Atgal į sąrašą", "Index", "Knyga", new { @class = "btn btn-default" })
+        </div>
+    }
+</div>

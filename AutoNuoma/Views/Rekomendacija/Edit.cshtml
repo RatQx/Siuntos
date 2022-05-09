@@ -1,0 +1,80 @@
+﻿@model IEnumerable<AutoNuoma.ViewModels.RekomenduojamaKnygaViewModel>
+
+<h2>Knygos</h2>
+
+<table class="table table-striped datatable">
+    <thead>
+    <td>
+        t
+    </td>
+    <tr style="background-color: lightblue">
+        <th>
+            @Html.DisplayNameFor(model => model.pavadinimas)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.autorius)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.kaina)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ISBN)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.isleidimo_metai)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.puslapiu_skaicius)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.leidykla)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.kiekis)
+        </th>
+
+
+        <th style="width: 18%"></th>
+    </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.pavadinimas)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.autorius)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.kaina)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ISBN)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.isleidimo_metai)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.puslapiu_skaicius)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.leidykla)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.kiekis)
+                </td>
+
+
+                <td>
+                    @Html.ActionLink("Šalinti", "Delete", new { id = item.ISBN}, new { @class = "btn btn-danger action" })
+                </td>
+            </tr>
+        }
+    <td>
+        @Html.ActionLink("Atgal", "Index", "Rekomendacija", new { @class = "btn btn-danger action" })
+    </td>
+    </tbody>
+</table>

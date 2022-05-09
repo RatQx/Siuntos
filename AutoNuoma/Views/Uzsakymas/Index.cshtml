@@ -1,0 +1,59 @@
+﻿@model IEnumerable<AutoNuoma.ViewModels.UzsakymaiViewModel>
+
+@{
+    ViewBag.Title = "Uzsakymai";
+}
+
+<h2>Užsakymai</h2>
+
+<p>
+    @*@Html.ActionLink("Naujas uzsakymas", "Create", "Uzsakymas", new { @class = "btn btn-success" })*@
+
+</p>
+<body>
+    <table class="table table-striped datatable">
+        <thead>
+            <tr style="background-color: lightblue">
+                <th>
+                    @Html.DisplayNameFor(model => model.uzsakovas)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.uzsakymo_kodas)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.uzsakymo_busena)
+                </th>
+                <th style="width: 18%"></th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var item in Model)
+            {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.uzsakovas)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.uzsakymo_kodas)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.uzsakymo_busena)
+                </td>
+                <td>
+                   @* @Html.ActionLink("Redaguoti", "Edit", new { id = item.uzsakymo_busena }, new { @class = "btn btn-primary action" })
+                    @Html.ActionLink("Šalinti", "Delete", new { id = item.uzsakymo_kodas }, new { @class = "btn btn-danger action" })*@
+                </td>
+            </tr>
+            }
+
+        </tbody>
+    </table>
+    <div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+            @* Navigacijos meniu *@
+            <li>@Html.ActionLink("Atgal", "Meniu", "Administratorius")</li>
+
+        </ul>
+    </div>
+</body>
