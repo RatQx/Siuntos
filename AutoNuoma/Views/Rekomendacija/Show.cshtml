@@ -1,0 +1,29 @@
+﻿@model IEnumerable<AutoNuoma.ViewModels.RekomenduojamaKnygaViewModel>
+
+@{
+    ViewBag.Title = "Show";
+}
+
+<h2>Knygos pridejimas</h2>
+
+<h3>Ar tikrai norite atvaizduoti sias knygas?</h3>
+<h3>Ar tikrai norite atvaizduoti rekomendacijose įvestas knygas?</h3>
+<div>
+    <hr />
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            @if (ViewBag.naudojama != null)
+            {
+                <h5 style="color:green">@ViewBag.naudojama</h5>
+            }
+            else
+            {
+                <input type="submit" value="Parodyti" class="btn btn-danger" />
+            }
+            @Html.ActionLink("Atgal", "Index", "Rekomendacija", new { @class = "btn btn-danger action" })
+        </div>
+    }
+</div>
