@@ -5,39 +5,32 @@ using System.Web;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
-namespace AutoNuoma.Models
+namespace AutoNuoma.ViewModels
 {
-    public class Uzsakymas
+    public class UzsakymasEditViewModel
     {
-        [DisplayName("ID")]
+        [DisplayName("id")]
         [Required]
         public int id { get; set; }
-
-        [DisplayName("Užsakymo data")]
+        [DisplayName("uzsakymo_data")]
         [Required]
         public DateTime uzsakymo_data { get; set; }
-
         [DisplayName("uzsakymo_busena")]
         [Required]
         public string uzsakymo_busena { get; set; }
-
-        [DisplayName("Pristatymo data")]
+        [DisplayName("pristatymo_data")]
         [Required]
         public DateTime pristatymo_data { get; set; }
-
-        [DisplayName("Užsakovas")]
+        [DisplayName("uzsakovas")]
         [Required]
         public int uzsakovas { get; set; }
-
-        [DisplayName("Užsakymo kodas")]
+        [DisplayName("uzsakymo_kodas")]
         [Required]
         public int uzsakymo_kodas { get; set; }
-
-        [DisplayName("Mokėjimo data")]
+        [DisplayName("mokejimo_data")]
         [Required]
         public DateTime mokejimo_data { get; set; }
-
-        [DisplayName("Kaina")]
+        [DisplayName("kaina")]
         [Required]
         public double kaina { get; set; }
     }

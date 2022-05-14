@@ -85,7 +85,7 @@ namespace AutoNuoma.Controllers
             try
             {
                 bool naudojama = false;
-                if (markeRepository.getMarkeCount(id)>0)
+                if (markeRepository.getMarkeCount(id) > 0)
                 {
                     naudojama = true;
                     ViewBag.naudojama = "Negalima pašalinti yra sukurtų modelių su šia marke.";

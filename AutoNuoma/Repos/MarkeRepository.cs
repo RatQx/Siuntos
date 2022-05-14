@@ -18,7 +18,7 @@ namespace AutoNuoma.Repos
             string conn = ConfigurationManager.ConnectionStrings["MysqlConnection"].ConnectionString;
             MySqlConnection mySqlConnection = new MySqlConnection(conn);
             string sqlquery = @"SELECT m.id, m.pavadinimas
-                                FROM "+Globals.dbPrefix+"markes m";
+                                FROM " + Globals.dbPrefix + "markes m";
             MySqlCommand mySqlCommand = new MySqlCommand(sqlquery, mySqlConnection);
             mySqlConnection.Open();
             MySqlDataAdapter mda = new MySqlDataAdapter(mySqlCommand);
@@ -45,7 +45,7 @@ namespace AutoNuoma.Repos
             string conn = ConfigurationManager.ConnectionStrings["MysqlConnection"].ConnectionString;
             MySqlConnection mySqlConnection = new MySqlConnection(conn);
             string sqlquery = @"SELECT m.id, m.pavadinimas 
-                                FROM "+Globals.dbPrefix+"markes m WHERE m.id="+id;
+                                FROM " + Globals.dbPrefix + "markes m WHERE m.id=" + id;
             MySqlCommand mySqlCommand = new MySqlCommand(sqlquery, mySqlConnection);
             mySqlConnection.Open();
             MySqlDataAdapter mda = new MySqlDataAdapter(mySqlCommand);
@@ -57,7 +57,7 @@ namespace AutoNuoma.Repos
             {
 
                 marke.id = Convert.ToInt32(item["id"]);
-                    marke.pavadinimas = Convert.ToString(item["pavadinimas"]);
+                marke.pavadinimas = Convert.ToString(item["pavadinimas"]);
             }
 
             return marke;
@@ -67,7 +67,7 @@ namespace AutoNuoma.Repos
         {
             string conn = ConfigurationManager.ConnectionStrings["MysqlConnection"].ConnectionString;
             MySqlConnection mySqlConnection = new MySqlConnection(conn);
-            string sqlquery = @"UPDATE "+Globals.dbPrefix+"markes a SET a.pavadinimas=?pavadinimas WHERE a.id=?id";
+            string sqlquery = @"UPDATE " + Globals.dbPrefix + "markes a SET a.pavadinimas=?pavadinimas WHERE a.id=?id";
             MySqlCommand mySqlCommand = new MySqlCommand(sqlquery, mySqlConnection);
             mySqlCommand.Parameters.Add("?id", MySqlDbType.VarChar).Value = marke.id;
             mySqlCommand.Parameters.Add("?pavadinimas", MySqlDbType.VarChar).Value = marke.pavadinimas;
@@ -81,7 +81,7 @@ namespace AutoNuoma.Repos
         {
             string conn = ConfigurationManager.ConnectionStrings["MysqlConnection"].ConnectionString;
             MySqlConnection mySqlConnection = new MySqlConnection(conn);
-            string sqlquery = @"INSERT INTO "+Globals.dbPrefix+"markes(pavadinimas)VALUES(?pavadinimas)";
+            string sqlquery = @"INSERT INTO " + Globals.dbPrefix + "markes(pavadinimas)VALUES(?pavadinimas)";
             MySqlCommand mySqlCommand = new MySqlCommand(sqlquery, mySqlConnection);
             mySqlCommand.Parameters.Add("?pavadinimas", MySqlDbType.VarChar).Value = marke.pavadinimas;
             mySqlConnection.Open();
@@ -95,7 +95,7 @@ namespace AutoNuoma.Repos
             int naudota = 0;
             string conn = ConfigurationManager.ConnectionStrings["MysqlConnection"].ConnectionString;
             MySqlConnection mySqlConnection = new MySqlConnection(conn);
-            string sqlquery = @"SELECT count(id) as kiekis from "+Globals.dbPrefix+"modeliai where fk_marke=" + id;
+            string sqlquery = @"SELECT count(id) as kiekis from " + Globals.dbPrefix + "modeliai where fk_marke=" + id;
             MySqlCommand mySqlCommand = new MySqlCommand(sqlquery, mySqlConnection);
             mySqlConnection.Open();
             MySqlDataAdapter mda = new MySqlDataAdapter(mySqlCommand);
@@ -114,7 +114,7 @@ namespace AutoNuoma.Repos
         {
             string conn = ConfigurationManager.ConnectionStrings["MysqlConnection"].ConnectionString;
             MySqlConnection mySqlConnection = new MySqlConnection(conn);
-            string sqlquery = @"DELETE FROM "+Globals.dbPrefix+"markes where id=?id";
+            string sqlquery = @"DELETE FROM " + Globals.dbPrefix + "markes where id=?id";
             MySqlCommand mySqlCommand = new MySqlCommand(sqlquery, mySqlConnection);
             mySqlCommand.Parameters.Add("?id", MySqlDbType.Int32).Value = id;
             mySqlConnection.Open();
