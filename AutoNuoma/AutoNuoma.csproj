@@ -139,6 +139,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AdministratoriusController.cs" />
     <Compile Include="Controllers\AnalitikasController.cs" />
+    <Compile Include="Controllers\ApmoketiPaslaugaController.cs" />
     <Compile Include="Controllers\AtaskaitaController.cs" />
     <Compile Include="Controllers\AutomobilisController.cs" />
     <Compile Include="Controllers\DarbuotojasController.cs" />
@@ -156,6 +157,7 @@
     <Compile Include="Controllers\PirkejasController.cs" />
     <Compile Include="Controllers\RekomendacijaController.cs" />
     <Compile Include="Controllers\SutartisController.cs" />
+    <Compile Include="Controllers\SiuntaController.cs" />
     <Compile Include="Controllers\UzsakymasController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -186,6 +188,7 @@
     <Compile Include="Models\PaslaugosKaina.cs" />
     <Compile Include="Models\PavaruDeze.cs" />
     <Compile Include="Models\Pirkejas.cs" />
+    <Compile Include="Models\Siunta.cs" />
     <Compile Include="Models\SutartiesBusena.cs" />
     <Compile Include="Models\Sutartis.cs" />
     <Compile Include="Models\Uzsakymas.cs" />
@@ -209,6 +212,7 @@
     <Compile Include="Repos\KlientasRepository.cs" />
     <Compile Include="Repos\KnygaRepository.cs" />
     <Compile Include="Repos\RekomenduojamaKnygaRepository.cs" />
+    <Compile Include="Repos\SiuntaRepository.cs" />
     <Compile Include="Repos\UzsakymasRepository.cs" />
     <Compile Include="ViewModels\AnalLoginModel.cs" />
     <Compile Include="ViewModels\KnygaEditViewModel.cs" />
@@ -244,10 +248,12 @@
     <Compile Include="ViewModels\RekomenduojamaKnygaEditViewModel.cs" />
     <Compile Include="ViewModels\RekomenduojamaKnygaViewModel.cs" />
     <Compile Include="ViewModels\SAtaskaitaViewModel.cs" />
+    <Compile Include="ViewModels\SiuntaEditViewModel.cs" />
     <Compile Include="ViewModels\SutartisAtaskViewModel.cs" />
     <Compile Include="ViewModels\SutartisEditViewModel.cs" />
     <Compile Include="ViewModels\SutartisListViewModel.cs" />
     <Compile Include="ViewModels\UzsakymaiViewModel.cs" />
+    <Compile Include="ViewModels\UzsakymasEditViewModel.cs" />
     <Compile Include="ViewModels\VeluojanciosSutartysViewModel.cs" />
     <Compile Include="ViewModels\VeluojanciosViewModel.cs" />
   </ItemGroup>
@@ -386,11 +392,15 @@
     <Content Include="Views\Rekomendacija\Delete.cshtml" />
     <Content Include="Views\Rekomendacija\Add.cshtml" />
     <Content Include="Views\Rekomendacija\Show.cshtml" />
+    <Content Include="Views\Uzsakymas\Create.cshtml" />
     <Content Include="Views\Uzsakymas\Index.cshtml" />
-    <Content Include="Views\Uzsakymas\Meniu.cshtml" />
     <Content Include="Views\Darbuotojas\Login.cshtml" />
     <Content Include="Views\Darbuotojas\Meniu.cshtml" />
     <Content Include="Views\Kurjeris\Meniu.cshtml" />
+    <Content Include="Views\Siunta\Create.cshtml" />
+    <Content Include="Views\Siunta\Index.cshtml" />
+    <Content Include="Views\Siunta\Edit.cshtml" />
+    <Content Include="Views\Uzsakymas\Pay.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
