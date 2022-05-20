@@ -1,0 +1,31 @@
+﻿@model AutoNuoma.Models.Siunta
+
+@{
+    ViewBag.Title = "Siuntos atsiėmimas";
+}
+
+<h2>Atsiimti siuntą</h2>
+
+<div>
+    @using (Html.BeginForm("Atsiimti", "Siunta", FormMethod.Post))
+    {
+        <table>
+            <tr>
+                <td>Uzsakymo kodas:</td>
+                <td>@Html.TextBoxFor(m => m.uzsakymo_kodas)</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><input type="submit" value="Atsiimti"></td>
+            </tr>
+        </table>
+    }
+</div>
+
+<div>
+    @Html.ActionLink("Grįžti atgal »", "Index", "Modelis", new { @class = "btn btn-default" })
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

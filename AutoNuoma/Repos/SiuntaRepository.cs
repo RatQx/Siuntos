@@ -20,7 +20,7 @@ namespace AutoNuoma.Repos
             Siunta siunta = new Siunta();
             string conn = ConfigurationManager.ConnectionStrings["MysqlConnection"].ConnectionString;
             MySqlConnection mySqlConnection = new MySqlConnection(conn);
-            string sqlquery = "select * from " + Globals.dbPrefix + "siunta where id=?id";
+            string sqlquery = "select * from " + Globals.dbPrefix + "siunta where siuntos_kodas=?id";
             MySqlCommand mySqlCommand = new MySqlCommand(sqlquery, mySqlConnection);
             mySqlCommand.Parameters.Add("?id", MySqlDbType.VarChar).Value = id;
             mySqlConnection.Open();
@@ -38,29 +38,28 @@ namespace AutoNuoma.Repos
                 siunta.gavejo_adresas = Convert.ToString(item["gavejo_adresas"]);
                 siunta.gavejo_el_pastas = Convert.ToString(item["gavejo_el_pastas"]);
                 siunta.gavejo_numeris = Convert.ToString(item["gavejo_numeris"]);
-                siunta.uzsakymo_kodas = Convert.ToInt32(item["uzsakymo_kodas"]);
+                siunta.uzsakymo_kodas = Convert.ToString(item["uzsakymo_kodas"]);
             }
 
             return siunta;
         }
 
-        public bool addSiunta(Siunta siunta)
+        public bool addSiunta(Siunta siunta, string uniqCode)
         {
-            string uniqCode = UzsakymasRepository.getValue();
             try
             {
                 string conn = ConfigurationManager.ConnectionStrings["MysqlConnection"].ConnectionString;
                 MySqlConnection mySqlConnection = new MySqlConnection(conn);
                 string sqlquery = @"INSERT INTO " + Globals.dbPrefix + "siunta(siuntos_busena,siuntos_svoris,siuntejo_adresas," +
-                    "gavejo_adresas,gavejo_el_pastas,gavejo_numeris,uzsakymo_kodas)VALUES(?siuntos_busena,?siuntos_svoris,?siuntejo_adresas,?gavejo_adresas,?gavejo_el_pastas,?gavejo_numeris,uzsakymo_kodas)";
+                    "gavejo_adresas,gavejo_el_pastas,gavejo_numeris,siuntos_kodas)VALUES(?siuntos_busena,?siuntos_svoris,?siuntejo_adresas,?gavejo_adresas,?gavejo_el_pastas,?gavejo_numeris,?siuntos_kodas)";
                 MySqlCommand mySqlCommand = new MySqlCommand(sqlquery, mySqlConnection);
-                mySqlCommand.Parameters.Add("?siuntos_busena", MySqlDbType.VarChar).Value = siunta.siuntos_busena;
+                mySqlCommand.Parameters.Add("?siuntos_busena", MySqlDbType.VarChar).Value = "Sukurta";
                 mySqlCommand.Parameters.Add("?siuntos_svoris", MySqlDbType.Float).Value = siunta.siuntos_svoris;
                 mySqlCommand.Parameters.Add("?siuntejo_adresas", MySqlDbType.VarChar).Value = siunta.siuntejo_adresas;
                 mySqlCommand.Parameters.Add("?gavejo_adresas", MySqlDbType.VarChar).Value = siunta.gavejo_adresas;
                 mySqlCommand.Parameters.Add("?gavejo_el_pastas", MySqlDbType.VarChar).Value = siunta.gavejo_el_pastas;
                 mySqlCommand.Parameters.Add("?gavejo_numeris", MySqlDbType.VarChar).Value = siunta.gavejo_numeris;
-                mySqlCommand.Parameters.Add("?uzsakymo_kodas", MySqlDbType.VarChar).Value = uniqCode;
+                mySqlCommand.Parameters.Add("?siuntos_kodas", MySqlDbType.VarChar).Value = uniqCode;
                 mySqlConnection.Open();
                 mySqlCommand.ExecuteNonQuery();
                 mySqlConnection.Close();
@@ -72,30 +71,20 @@ namespace AutoNuoma.Repos
             }
         }
 
-        public bool updateSiunta(Siunta siunta)
+        
+        public bool atsiimtiSiunta(string siunta)
         {
             string conn = ConfigurationManager.ConnectionStrings["MysqlConnection"].ConnectionString;
             MySqlConnection mySqlConnection = new MySqlConnection(conn);
-            string sqlquery = @"UPDATE `" + Globals.dbPrefix + @"siunta` SET
-                                    `siuntos_busena` = ?siuntos_busena,
-                                    `siuntos_svoris` = ?siuntos_svoris,
-                                    `siuntejo_adresas` = ?siuntejo_adresas,
-                                    `gavejo_numeris` = ?gavejo_numeris,
-                                    `gavejo_el_pastas` = ?gavejo_el_pastas,
-                                    `gavejo_adresas` = ?gavejo_adresas,
-                                    WHERE nr=" + siunta.id;
+            string sqlquery = @"UPDATE `siunta` SET `siuntos_busena`=?busena WHERE `siuntos_kodas`='"+ siunta + "'";
             MySqlCommand mySqlCommand = new MySqlCommand(sqlquery, mySqlConnection);
-            mySqlCommand.Parameters.Add("?siuntos_busena", MySqlDbType.VarChar).Value = siunta.siuntos_busena;
-            mySqlCommand.Parameters.Add("?siuntos_svoris", MySqlDbType.Float).Value = siunta.siuntos_svoris.ToString();
-            mySqlCommand.Parameters.Add("?siuntejo_adresas", MySqlDbType.VarChar).Value = siunta.siuntejo_adresas;
-            mySqlCommand.Parameters.Add("?gavejo_numeris", MySqlDbType.VarChar).Value = siunta.gavejo_numeris;
-            mySqlCommand.Parameters.Add("?gavejo_el_pastas", MySqlDbType.VarChar).Value = siunta.gavejo_el_pastas;
-            mySqlCommand.Parameters.Add("?gavejo_adresas", MySqlDbType.VarChar).Value = siunta.gavejo_adresas;
+            mySqlCommand.Parameters.Add("?busena", MySqlDbType.VarChar).Value = "Prsitatyta";
             mySqlConnection.Open();
             mySqlCommand.ExecuteNonQuery();
             mySqlConnection.Close();
 
             return true;
         }
+        
     }
 }

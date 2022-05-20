@@ -35,7 +35,8 @@ namespace AutoNuoma.Controllers
 
         public ActionResult Pay()
         {
-            return View();
+            Uzsakymas uzsakymas = new Uzsakymas();
+            return View(uzsakymas);
         }
 
         [HttpPost]
@@ -43,8 +44,6 @@ namespace AutoNuoma.Controllers
         {
             try
             {
-                uzsakymasrepository.updateUzsakymas(collection);
-
                 return RedirectToAction("Index", "Home", new { area = "" });
             }
             catch
@@ -59,17 +58,14 @@ namespace AutoNuoma.Controllers
         }
         public ActionResult Create()
         {
-            Uzsakymas uzsakymas = new Uzsakymas();
-            return View(uzsakymas);
+            return View();
         }
 
         [HttpPost]
         public ActionResult Create(Uzsakymas collection)
         {
-            string uniqCode = GenerateCode(10);
             try
             {
-                uzsakymasrepository.addUzsakymas(collection, uniqCode);
 
                 return RedirectToAction("Create","Siunta", new { area = "" });
             }
@@ -79,27 +75,5 @@ namespace AutoNuoma.Controllers
             }
         }
 
-        public ActionResult Edit(string id)
-        {
-            return View(uzsakymasrepository.getUzsakymas(id));
-        }
-
-        [HttpPost]
-        public ActionResult Edit(string id, Uzsakymas collection)
-        {
-            try
-            {
-                if (ModelState.IsValid)
-                {
-                    uzsakymasrepository.updateUzsakymas(collection);
-                }
-
-                return RedirectToAction("Meniu");
-            }
-            catch
-            {
-                return View(collection);
-            }
-        }
     }
 }
