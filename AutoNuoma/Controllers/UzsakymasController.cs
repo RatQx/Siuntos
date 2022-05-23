@@ -57,6 +57,10 @@ namespace AutoNuoma.Controllers
         {
             return View();
         }
+        public ActionResult Check()
+        {
+            return View(uzsakymasrepository.GetUzsakymas());
+        }
         public ActionResult Create()
         {
             Uzsakymas uzsakymas = new Uzsakymas();
