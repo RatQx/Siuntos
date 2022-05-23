@@ -17,12 +17,6 @@ namespace AutoNuoma.Repos
     public class UzsakymasRepository
     { 
 
-        public static string uniqValue { get; set; }
-        public static string getValue()
-        {
-            return uniqValue;
-        }
-
         public bool addUzsakymas(Uzsakymas uzsakymas,string uniqCode)
         {
             string conn = ConfigurationManager.ConnectionStrings["MysqlConnection"].ConnectionString;
@@ -35,7 +29,7 @@ namespace AutoNuoma.Repos
             mySqlCommand.Parameters.Add("?pristatymo_data", MySqlDbType.DateTime).Value = uzsakymas.pristatymo_data;
             mySqlCommand.Parameters.Add("?uzsakovas", MySqlDbType.Int32).Value = uzsakymas.uzsakovas;
             mySqlCommand.Parameters.Add("?uzsakymo_kodas", MySqlDbType.VarChar).Value = uniqCode;
-            mySqlCommand.Parameters.Add("?mokejimo_data", MySqlDbType.DateTime).Value = uzsakymas.mokejimo_data;
+            mySqlCommand.Parameters.Add("?mokejimo_data", MySqlDbType.DateTime).Value = DateTime.Now;
             mySqlCommand.Parameters.Add("?kaina", MySqlDbType.Float).Value = 3.99;
             mySqlConnection.Open();
             mySqlCommand.ExecuteNonQuery();
@@ -43,23 +37,6 @@ namespace AutoNuoma.Repos
             return true;
         }
 
-        public bool updateUzsakymas(Uzsakymas uzsakymas)
-        {
-            string conn = ConfigurationManager.ConnectionStrings["MysqlConnection"].ConnectionString;
-            MySqlConnection mySqlConnection = new MySqlConnection(conn);
-            string sqlquery = @"UPDATE `" + Globals.dbPrefix + @"uzsakymas` SET
-                                    `uzsakymo_busena` = ?uzsakymo_busena,
-                                    `mokejimo_data` = ?mokejimo_data
-                                    WHERE nr=" + uzsakymas.id;
-            MySqlCommand mySqlCommand = new MySqlCommand(sqlquery, mySqlConnection);
-            mySqlCommand.Parameters.Add("?mokejimo_data", MySqlDbType.DateTime).Value = uzsakymas.mokejimo_data.ToString("yyyy-MM-dd hh:mm:ss");
-            mySqlCommand.Parameters.Add("?uzsakymo_busena", MySqlDbType.VarChar).Value = "Apmoketas";
-            mySqlConnection.Open();
-            mySqlCommand.ExecuteNonQuery();
-            mySqlConnection.Close();
-
-            return true;
-        }
 
         public Uzsakymas getUzsakymas(string id)
         {
@@ -82,13 +59,14 @@ namespace AutoNuoma.Repos
                 uzsakymas.uzsakymo_busena = Convert.ToString(item["uzsakymo_busena"]);
                 uzsakymas.pristatymo_data = Convert.ToDateTime(item["pristatymo_data"]);
                 uzsakymas.uzsakovas = Convert.ToInt32(item["uzsakovas"]);
-                uzsakymas.uzsakymo_kodas = Convert.ToInt32(item["uzsakymo_kodas"]);
+                uzsakymas.uzsakymo_kodas = Convert.ToString(item["uzsakymo_kodas"]);
                 uzsakymas.mokejimo_data = Convert.ToDateTime(item["mokejimo_data"]);
                 uzsakymas.kaina = Convert.ToDouble(item["kaina"]);
             }
 
             return uzsakymas;
         }
+<<<<<<< HEAD
         public List<UzsakymaiViewModel> GetUzsakymas()
         {
             List<UzsakymaiViewModel> uzsakymasViewModels = new List<UzsakymaiViewModel>();
@@ -119,5 +97,23 @@ namespace AutoNuoma.Repos
 
             return uzsakymasViewModels;
         }
+=======
+        
+        public bool atsiimtiUzsakymas(string order_id)
+        {
+            string conn = ConfigurationManager.ConnectionStrings["MysqlConnection"].ConnectionString;
+            MySqlConnection mySqlConnection = new MySqlConnection(conn);
+            string sqlquery = @"UPDATE `uzsakymas` SET `pristatymo_data`=?pristatym_data, `uzsakymo_busena`=?uzsakym_busena WHERE `uzsakymo_kodas`='" + order_id + "'";
+            MySqlCommand mySqlCommand = new MySqlCommand(sqlquery, mySqlConnection);
+            mySqlCommand.Parameters.Add("?pristatym_data", MySqlDbType.DateTime).Value = DateTime.Now;
+            mySqlCommand.Parameters.Add("?uzsakym_busena", MySqlDbType.VarChar).Value = "Užbaigtas";
+            mySqlCommand.Parameters.Add("?id", MySqlDbType.VarChar).Value = order_id;
+            mySqlConnection.Open();
+            mySqlCommand.ExecuteNonQuery();
+            mySqlConnection.Close();
+            return true;
+        }
+        
+>>>>>>> 2ceaefda6a74897464a8b2fd2ed9f0fd258c5740
     }
 }

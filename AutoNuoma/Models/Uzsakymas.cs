@@ -31,7 +31,7 @@ namespace AutoNuoma.Models
 
         [DisplayName("Užsakymo kodas")]
         [Required]
-        public int uzsakymo_kodas { get; set; }
+        public string uzsakymo_kodas { get; set; }
 
         [DisplayName("Mokėjimo data")]
         [Required]

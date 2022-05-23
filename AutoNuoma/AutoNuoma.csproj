@@ -399,9 +399,12 @@
     <Content Include="Views\Kurjeris\Meniu.cshtml" />
     <Content Include="Views\Siunta\Create.cshtml" />
     <Content Include="Views\Siunta\Index.cshtml" />
-    <Content Include="Views\Siunta\Edit.cshtml" />
     <Content Include="Views\Uzsakymas\Pay.cshtml" />
+<<<<<<< HEAD
     <Content Include="Views\Uzsakymas\Check.cshtml" />
+=======
+    <Content Include="Views\Siunta\Atsiimti.cshtml" />
+>>>>>>> 2ceaefda6a74897464a8b2fd2ed9f0fd258c5740
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

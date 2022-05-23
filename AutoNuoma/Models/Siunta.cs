@@ -14,7 +14,7 @@ namespace AutoNuoma.Models
 
         [DisplayName("uzsakymo_kodas")]
         [Required]
-        public int uzsakymo_kodas { get; set; }
+        public string uzsakymo_kodas { get; set; }
 
         [DisplayName("Siuntos būsena")]
         [Required]
