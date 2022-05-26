@@ -2,22 +2,102 @@
 
 @{
     ViewBag.Title = "Apmoketi uzsakyma";
+
 }
 
-<h2>Apmoketi sudaryta uzsakyma</h2>
+<link rel="stylesheet" href="~/Content/themes/Pay.css" />
 
-<fieldset>
+@using (Html.BeginForm("Index", "Home", FormMethod.Post, new { @class = "form-horizontal" }))
+{
     <legend>Apmokėjimas</legend>
     <div class="form-horizontal">
 
+        <div class="padding">
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <strong>Mokėjimo kortelės duomenys</strong>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="form-group">
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Apmokėti" class="btn btn-success" />
+                                        <label for="name">Vardas ir pavardė</label>
+                                        <input class="form-control" id="name" type="text" placeholder="Įrašykite vardą ir pavardę" required>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <label for="ccnumber">Kortelės numeris</label>
+
+                                        <div class="input-group">
+                                            <input class="form-control" type="text" placeholder="0000 0000 0000 0000" autocomplete="email" required>
+                                            <div class="input-group-append">
+                                                <span class="input-group-text">
+                                                    <i class="mdi mdi-credit-card"></i>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="form-group col-sm-4">
+                                    <label for="ccmonth">Mėnesis</label>
+                                    <select class="form-control" id="ccmonth">
+                                        <option>1</option>
+                                        <option>2</option>
+                                        <option>3</option>
+                                        <option>4</option>
+                                        <option>5</option>
+                                        <option>6</option>
+                                        <option>7</option>
+                                        <option>8</option>
+                                        <option>9</option>
+                                        <option>10</option>
+                                        <option>11</option>
+                                        <option>12</option>
+                                    </select>
+                                </div>
+                                <div class="form-group col-sm-4">
+                                    <label for="ccyear">Metai</label>
+                                    <select class="form-control" id="ccyear">
+                                        <option>2022</option>
+                                        <option>2023</option>
+                                        <option>2024</option>
+                                        <option>2025</option>
+                                        <option>2026</option>
+                                        <option>2027</option>
+                                    </select>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label for="cvv">CVV/CVC</label>
+                                        <input class="form-control" id="cvv" type="text" placeholder="123" required>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="card-footer">
+                            <button class="btn btn-sm btn-success float-right" type="submit">
+                                <i class="mdi mdi-gamepad-circle"></i> Apmokėti
+                            </button>
+                        </div>
+
+                    </div>
+
+                </div>
             </div>
         </div>
     </div>
-</fieldset>
+}
 
 <table class="table table-striped datatable">
     <div>
