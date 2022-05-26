@@ -55,7 +55,7 @@ namespace AutoNuoma.Controllers
                 siuntaRepository.addSiunta(collection, uniqCode);
                 uzsakymasrepository.addUzsakymas(collection2, uniqCode);
 
-                return RedirectToAction("Index", "Home", new { area = "" });
+                return RedirectToAction("Pay", "Uzsakymas", new { area = "" });
             }
             catch
             {
