@@ -35,8 +35,7 @@ namespace AutoNuoma.Controllers
 
         public ActionResult Pay()
         {
-            Uzsakymas uzsakymas = new Uzsakymas();
-            return View(uzsakymas);
+            return View();
         }
 
         [HttpPost]
