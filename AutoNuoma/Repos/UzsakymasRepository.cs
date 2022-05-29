@@ -66,7 +66,6 @@ namespace AutoNuoma.Repos
 
             return uzsakymas;
         }
-<<<<<<< HEAD
         public List<UzsakymaiViewModel> GetUzsakymas()
         {
             List<UzsakymaiViewModel> uzsakymasViewModels = new List<UzsakymaiViewModel>();
@@ -97,7 +96,6 @@ namespace AutoNuoma.Repos
 
             return uzsakymasViewModels;
         }
-=======
         
         public bool atsiimtiUzsakymas(string order_id)
         {
@@ -114,6 +112,5 @@ namespace AutoNuoma.Repos
             return true;
         }
         
->>>>>>> 2ceaefda6a74897464a8b2fd2ed9f0fd258c5740
     }
 }
