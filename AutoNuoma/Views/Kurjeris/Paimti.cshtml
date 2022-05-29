@@ -9,28 +9,28 @@
 <table class="table table-striped datatable">
     <thead>
 
-    <tr style="background-color: lightblue">
-        <th>
-            @Html.DisplayNameFor(model => model.id)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.siuntos_busena)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.siuntejo_adresas)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.gavejo_adresas)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.gavejo_numeris)
-        </th>
-		<th>
-            @Html.DisplayNameFor(model => model.uzsakymo_kodas)
-        </th>
-        
-        <th style="width: 18%"></th>
-    </tr>
+        <tr style="background-color: lightblue">
+            <th>
+                @Html.DisplayNameFor(model => model.id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.siuntos_busena)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.siuntejo_adresas)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.gavejo_adresas)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.gavejo_numeris)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.uzsakymo_kodas)
+            </th>
+
+            <th style="width: 18%"></th>
+        </tr>
     </thead>
     <tbody>
 
@@ -52,14 +52,14 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.gavejo_numeris)
                 </td>
-				<td>
+                <td>
                     @Html.DisplayFor(modelItem => item.uzsakymo_kodas)
                 </td>
-             
+
                 <td>
                     @Html.ActionLink("Paimti", "Paimti", new { kodas = item.uzsakymo_kodas }, new { @class = "btn btn-primary action" })
                     @Html.ActionLink("Sandelyje", "Sandelyje", new { kodas = item.uzsakymo_kodas }, new { @class = "btn btn-primary action" })
-					@Html.ActionLink("Pristatyti", "Pristatyti", new { kodas = item.uzsakymo_kodas }, new { @class = "btn btn-primary action" })
+                    @Html.ActionLink("Pristatyti", "Pristatyti", new { kodas = item.uzsakymo_kodas }, new { @class = "btn btn-primary action" })
                 </td>
             </tr>
         }
