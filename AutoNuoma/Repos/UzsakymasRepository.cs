@@ -66,6 +66,7 @@ namespace AutoNuoma.Repos
 
             return uzsakymas;
         }
+<<<<<<< HEAD
         
         public bool atsiimtiUzsakymas(string order_id)
         {
@@ -82,5 +83,7 @@ namespace AutoNuoma.Repos
             return true;
         }
         
+=======
+>>>>>>> parent of 6753850 (bug fixed)
     }
 }
