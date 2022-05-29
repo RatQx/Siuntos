@@ -32,7 +32,7 @@ namespace AutoNuoma.Repos
                     vardas = Convert.ToString(item["vardas"]),
                     pavarde = Convert.ToString(item["pavarde"]),
                     role = Convert.ToString(item["role"]),
-                    idarbinimp_data = Convert.ToDateTime(item["idarbinimo_data"])
+                    idarbinimo_data = Convert.ToDateTime(item["idarbinimo_data"])
             });
             }
 
@@ -59,7 +59,7 @@ namespace AutoNuoma.Repos
                 darbuotojas.vardas = Convert.ToString(item["vardas"]);
                 darbuotojas.pavarde = Convert.ToString(item["pavarde"]);
                 darbuotojas.role = Convert.ToString(item["role"]);
-                darbuotojas.idarbinimp_data = Convert.ToDateTime(item["idarbinimo_data"]);
+                darbuotojas.idarbinimo_data = Convert.ToDateTime(item["idarbinimo_data"]);
             }
 
             return darbuotojas;
@@ -161,14 +161,14 @@ namespace AutoNuoma.Repos
             }
             return a.pavarde;
         }
-        public string getRole(string prisijungimo_vardass)
+        public string getRole(string prisijungimo_role)
         {
             Darbuotojas a = new Darbuotojas();
             string conn = ConfigurationManager.ConnectionStrings["MysqlConnection"].ConnectionString;
             MySqlConnection mySqlConnection = new MySqlConnection(conn);
             string sqlquery = "select * from darbuotojai where vardas=?prisijungimo_vardass";
             MySqlCommand mySqlCommand = new MySqlCommand(sqlquery, mySqlConnection);
-            mySqlCommand.Parameters.Add("?prisijungimo_vardass", MySqlDbType.VarChar).Value = prisijungimo_vardass;
+            mySqlCommand.Parameters.Add("?prisijungimo_vardass", MySqlDbType.VarChar).Value = prisijungimo_role;
             mySqlConnection.Open();
             MySqlDataAdapter mda = new MySqlDataAdapter(mySqlCommand);
             DataTable dt = new DataTable();

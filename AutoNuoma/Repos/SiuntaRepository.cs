@@ -85,6 +85,51 @@ namespace AutoNuoma.Repos
 
             return true;
         }
-        
+
+        public bool ChangeBusena(string kodas, string busena)
+        {
+            string conn = ConfigurationManager.ConnectionStrings["MysqlConnection"].ConnectionString;
+            MySqlConnection mySqlConnection = new MySqlConnection(conn);
+            string sqlquery = @"UPDATE `siunta` SET `siuntos_busena`=?busena WHERE `siuntos_kodas`='" + kodas + "'";
+            MySqlCommand mySqlCommand = new MySqlCommand(sqlquery, mySqlConnection);
+            mySqlCommand.Parameters.Add("?busena", MySqlDbType.VarChar).Value = busena;
+            mySqlConnection.Open();
+            mySqlCommand.ExecuteNonQuery();
+            mySqlConnection.Close();
+
+            return true;
+        }
+
+        public List<Siunta> Select()
+        {
+            List<Siunta> siuntos = new List<Siunta>();
+
+            string conn = ConfigurationManager.ConnectionStrings["MysqlConnection"].ConnectionString;
+            MySqlConnection mySqlConnection = new MySqlConnection(conn);
+            string sqlquery = @"SELECT * FROM `siunta`";
+            MySqlCommand mySqlCommand = new MySqlCommand(sqlquery, mySqlConnection);
+            mySqlConnection.Open();
+            MySqlDataAdapter mda = new MySqlDataAdapter(mySqlCommand);
+            DataTable dt = new DataTable();
+            mda.Fill(dt);
+            mySqlConnection.Close();
+
+            foreach (DataRow item in dt.Rows)
+            {
+                siuntos.Add(new Siunta
+                {
+                    id = Convert.ToInt32(item["id"]),
+                    siuntos_busena = Convert.ToString(item["siuntos_busena"]),
+                    siuntos_svoris = Convert.ToDouble(item["siuntos_svoris"]),
+                    siuntejo_adresas = Convert.ToString(item["siuntejo_adresas"]),
+                    gavejo_adresas = Convert.ToString(item["gavejo_adresas"]),
+                    gavejo_el_pastas = Convert.ToString(item["gavejo_el_pastas"]),
+                    gavejo_numeris = Convert.ToString(item["gavejo_numeris"]),
+                    uzsakymo_kodas = Convert.ToString(item["siuntos_kodas"])
+                });
+
+            }
+            return siuntos;
+        }
     }
 }

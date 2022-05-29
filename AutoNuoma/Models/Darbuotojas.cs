@@ -26,6 +26,6 @@ namespace AutoNuoma.Models
         [Required]
         public string role { get; set; }
         [DisplayName("Data")]        
-        public DateTime idarbinimp_data { get; set; }
+        public DateTime idarbinimo_data { get; set; }
     }
 }
